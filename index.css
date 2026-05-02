@@ -1,0 +1,118 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050510;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Asosiy konteyner */
+    .box {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      background: linear-gradient(135deg, #3ade08 0%, #68ef0e 50%, #10da1a 100%);
+      border-radius: 24px;
+      padding: 60px 56px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      position: relative;
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Loading qatlam (Butun aknoni egallaydi) */
+    .overlay-loading {
+      position: absolute;
+      inset: 0;
+      background: #16213e;
+      border-radius: 24px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid rgba(255,255,255,0.1);
+      border-top: 6px solid #4ecca3;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Katta Smaylik qatlami */
+    .overlay-emoji {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      z-index: 11;
+      background: rgba(15, 52, 96, 0.9);
+      border-radius: 24px;
+      animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* Tugmalar va ustunlar */
+    .col { display: flex; flex-direction: column; gap: 14px; }
+
+    .num-card {
+      width: 64px; height: 64px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      box-shadow: 0 4px 15px rgba(196, 164, 164, 0.1);
+    }
+
+    .col-left .num-card {background: #929292;   color: #CECBF6; border: 1px solid #7F77DD; }
+    .col-right .num-card{background: #0F6E56;   color: #9FE1CB; border: 1px solid #1D9E75; }
+ 
+    
+    .num-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+    .off-btn {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, #f05757, #A32D2D);
+      border: none; color: #fff; font-weight: bold;
+      cursor: pointer; box-shadow: 0 5px 15px rgba(163,45,45,0.4);
+    }
+
+    /* Animatsiyalar */
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes zoomIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1.2); opacity: 1; } }
+    
+    #hello-screen {
+      display: none;
+      color: #4ecca3;
+      font-size: 80px;
+      text-shadow: 0 0 30px rgba(78,204,163,0.5);
+      animation: zoomIn 0.6s forwards;
+    }
+
+    .glow-active {
+      box-shadow: 0 0 30px #fff !important;
+      background: #fff !important;
+      color: #1a1a2e !important;
+    }
+
+    /* 1-tugma Inputi */
+    #input-box {
+      position: absolute; top: -70px;
+      width: 100%; text-align: center;
+      display: none; animation: fadeIn 0.4s;
+    }
+    input {
+      padding: 12px 20px; border-radius: 30px; border: 2px solid #534AB7;
+      background: #1a1a2e; color: white; outline: none;
+    }

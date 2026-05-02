@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interaktiv Panel Pro</title>
+   <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+  <h1 id="hello-screen">HELLO! 👋</h1>
+
+  <div class="box" id="mainBox">
+    <!-- Overlaylar -->
+    <div class="overlay-loading" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p style="color: white; margin-top: 15px; letter-spacing: 2px;">LOADING...</p>
+    </div>
+    
+    <div class="overlay-emoji" id="emojiOverlay">😊</div>
+
+    <div id="input-box">
+        <input type="text" placeholder="Ma'lumot kiriting...">
+    </div>
+
+    <div class="col">
+      <div class="num-card" onclick="action1()">1</div>
+      <div class="num-card" onclick="action2()">2</div>
+      <div class="num-card" onclick="action3()">3</div>
+    </div>
+
+    <button class="off-btn">OFF</button>
+
+    <div class="col">
+      <div class="num-card" onclick="action4()">4</div>
+      <div class="num-card" onclick="action5()">5</div>
+      <div class="num-card" onclick="action6()">6</div>
+    </div>
+  </div>
+
+  <script>
+    const box = document.getElementById('mainBox');
+    const loading = document.getElementById('loadingOverlay');
+    const emoji = document.getElementById('emojiOverlay');
+    const hello = document.getElementById('hello-screen');
+    const input = document.getElementById('input-box');
+
+    // 1-tugma: Input chiqishi
+    function action1() {
+        input.style.display = input.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // 2-tugma: Loading (butun aknoni egallaydi)
+    function action2() {
+        loading.style.display = 'flex';
+        setTimeout(() => {
+            loading.style.display = 'none';
+        }, 3000);
+    }
+
+    // 3-tugma: Panel jigaliwi ham HELLO
+    function action3() {
+        box.style.transform = 'scale(0) rotate(-180deg)';
+        box.style.opacity = '0';
+        setTimeout(() => {
+            box.style.display = 'none';
+            hello.style.display = 'block';
+        }, 600);
+    }
+
+    // 4-tugma: Panel slikiniw animatsiyasi
+    function action4() {
+        box.style.animation = 'none';
+        box.offsetHeight; // reflow
+        box.style.border = '2px solid #4ecca3';
+        setTimeout(() => box.style.border = '1px solid rgba(255,255,255,0.1)', 1000);
+    }
+
+    // 5-tugma: KATTA smaylik
+    function action5() {
+        emoji.style.display = 'flex';
+        setTimeout(() => {
+            emoji.style.display = 'none';
+        }, 2000);
+    }
+
+    // 6-tugma: Hamma tugmalarning yonishi
+    function action6() {
+        const cards = document.querySelectorAll('.num-card');
+        cards.forEach(c => c.classList.add('glow-active'));
+        setTimeout(() => {
+            cards.forEach(c => c.classList.remove('glow-active'));
+        }, 2000);
+    }
+  </script>
+</body>
+</html>
